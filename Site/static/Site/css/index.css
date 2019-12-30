@@ -1,0 +1,9 @@
+.site-header .index {
+    color: #fff;
+    text-decoration: none;
+}
+
+body {
+    background-image: url("../../img/index.jpeg");
+    background-size: cover;
+}
