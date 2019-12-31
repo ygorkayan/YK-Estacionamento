@@ -42,7 +42,9 @@
         </label>
     </div>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-    <button class="btn btn-lg btn-primary btn-block">Retorna ao Site</button>
+    <a href="{% url "site-index" %}">
+        <input type="button" value="Retorna" class="btn btn-lg btn-primary btn-block">
+    </a>
     <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
 </form>
 </body>
