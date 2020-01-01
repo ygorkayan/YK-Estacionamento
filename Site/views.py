@@ -19,6 +19,12 @@ def suporte(request):
         formulario = FormSuporte(request.POST)
         if formulario.is_valid():
             formulario.save()
+
+            nome = request.POST["nome"]
+            email = request.POST["email"]
+
+            email = threading.Thread(target=Mandar_Email, args=(nome, email, 2))
+            email.start()
     return render(request, "Site/suporte.html")
 
 
@@ -49,17 +55,23 @@ def carrinho(request):
                 "senha": "abc123"
             }
 
-            email = threading.Thread(target=Mandar_Email, args=(nome, email, outros))
+            email = threading.Thread(target=Mandar_Email, args=(nome, email, 1, outros))
             email.start()
     return render(request, "Site/index.html")
 
 
-def Mandar_Email(nome, email, outros):
-    assunto = "YK Estacionamento"
+def Mandar_Email(nome, email, tipo, outros=""):
+    # Tipo
+    # 1 Compra / Carrinho
+    # 2 Suporte
 
-    msg = f"Obrigado por comprar sua mensalidade {nome}, ela foi no valor de ${outros['valor']}\n" \
-          f"login: {outros['nickname']}\n" \
-          f"senha: {outros['senha']}\n" \
-          f"Faça login e aproveite a melhor empresa de estacionamento"
+    assunto = "YK Estacionamento"
+    if tipo == 1:
+        msg = f"Obrigado por comprar sua mensalidade {nome}, ela foi no valor de ${outros['valor']}\n" \
+              f"login: {outros['nickname']}\n" \
+              f"senha: {outros['senha']}\n" \
+              f"Faça login e aproveite a melhor empresa de estacionamento"
+    else:
+        msg = "Sua mensagem foi recebida, logo entraremos em contato."
 
     send_mail(assunto, msg, 'myemail@gmail.com', [email])
