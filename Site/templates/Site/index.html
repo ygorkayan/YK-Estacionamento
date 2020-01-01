@@ -1,11 +1,33 @@
 {% extends "Site/base.html" %}
 
 {% block conteudo %}
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+    body, h1 {
+        font-family: "Raleway", sans-serif
+    }
 
-     <!-- Estilos customizados para esse template -->
-    <link href="../../static/Site/css/index.css" rel="stylesheet">
+    body, html {
+        height: 100%;
+        background-color: black;
+    }
 
-    <div>
+    .bgimg {
+        background-image: url(../../static/img/index.jpg) ;
+        min-height: 100%;
+        background-position: center;
+        background-size: cover;
+    }
 
+</style>
+
+<div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+    <div class="w3-display-middle">
+        <h1 class="w3-jumbo w3-animate-top texto">YK Estacionamento</h1>
+        <hr class="w3-border-grey" style="margin:auto;width:40%">
+        <p class="w3-large w3-center texto">O Melhor lugar para estacionar</p>
     </div>
+</div>
 {% endblock conteudo %}
+
