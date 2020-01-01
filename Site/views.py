@@ -1,4 +1,8 @@
-from django.shortcuts import render, redirect
+import threading
+
+from django.core.mail import send_mail
+from django.shortcuts import render
+
 from .forms import FormSuporte, FormCarrinho
 
 
@@ -35,4 +39,27 @@ def carrinho(request):
         if formulario.is_valid():
             formulario.save()
 
+            nome = request.POST["nome"]
+            valor = request.POST["valor"]
+            email = request.POST["email"]
+            nickname = request.POST["nickname"]
+            outros = {
+                "valor": valor,
+                "nickname": nickname,
+                "senha": "abc123"
+            }
+
+            email = threading.Thread(target=Mandar_Email, args=(nome, email, outros))
+            email.start()
     return render(request, "Site/index.html")
+
+
+def Mandar_Email(nome, email, outros):
+    assunto = "YK Estacionamento"
+
+    msg = f"Obrigado por comprar sua mensalidade {nome}, ela foi no valor de ${outros['valor']}\n" \
+          f"login: {outros['nickname']}\n" \
+          f"senha: {outros['senha']}\n" \
+          f"Faça login e aproveite a melhor empresa de estacionamento"
+
+    send_mail(assunto, msg, 'myemail@gmail.com', [email])
