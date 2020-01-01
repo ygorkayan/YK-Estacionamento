@@ -26,8 +26,8 @@ urlpatterns = [
     path('', Site.index, name="site-index"),
     path('sobre/', Site.sobre, name="site-sobre"),
     path('preco/', Site.preco, name="site-preco"),
-    path('carrinho/', Site.carrinho, name="site-carrinho"),
     path('suporte/', Site.suporte, name="site-suporte"),
+    path('carrinho/', Site.carrinho, name="site-carrinho"),
 
     # App Login:
     path('Login/', Login.index, name="login-index"),

@@ -14,18 +14,19 @@
             </p>
         </div>
 
-        <form class="needs-validation" novalidate>
+        <form class="needs-validation" novalidate method="post">
+            {% csrf_token %}
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="primeiroNome">Nome</label>
-                    <input type="text" class="form-control" id="primeiroNome" placeholder="" value="" required>
+                    <input type="text" class="form-control" id="primeiroNome" placeholder="" name="nome" required>
                     <div class="invalid-feedback">
                         É obrigatório inserir um nome válido.
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="sobrenome">Sobrenome</label>
-                    <input type="text" class="form-control" id="sobrenome" placeholder="" value="" required>
+                    <input type="text" class="form-control" id="sobrenome" placeholder="" name="sobrenome" required>
                     <div class="invalid-feedback">
                         É obrigatório inserir um sobre nome válido.
                     </div>
@@ -38,7 +39,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">@</span>
                     </div>
-                    <input type="text" class="form-control" id="nickname" placeholder="Nickname" required>
+                    <input type="text" class="form-control" id="nickname" placeholder="Nickname" name="nickname" required>
                     <div class="invalid-feedback" style="width: 100%;">
                         Seu nickname é obrigatório.
                     </div>
@@ -47,7 +48,7 @@
 
             <div class="mb-3">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="fulano@exemplo.com" required>
+                <input type="email" class="form-control" id="email" placeholder="fulano@exemplo.com" name="email" required>
                 <div class="invalid-feedback">
                     Por favor, insira um endereço de e-mail válido.
                 </div>
@@ -56,7 +57,7 @@
             <div class="mb-3">
                 <label for="endereco">Texto</label>
 
-                <textarea rows="10" class="form-control" id="texto" required></textarea>
+                <textarea rows="10" class="form-control" id="texto" name="texto" required></textarea>
                 <div class="invalid-feedback">
                     Por favor, insira seu problema.
                 </div>
