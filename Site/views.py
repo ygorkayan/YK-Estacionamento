@@ -1,6 +1,6 @@
 import threading
 from django.core.mail import send_mail
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import FormSuporte, FormCarrinho
 
 
@@ -23,6 +23,7 @@ def suporte(request):
 
             email = threading.Thread(target=Mandar_Email, args=(nome, email, 2))
             email.start()
+            return redirect("site-index")
     return render(request, "Site/suporte.html")
 
 
@@ -47,10 +48,11 @@ def carrinho(request):
             valor = request.POST["valor"]
             email = request.POST["email"]
             nickname = request.POST["nickname"]
+            senha = request.POST["senha"]
             outros = {
                 "valor": valor,
                 "nickname": nickname,
-                "senha": "abc123"
+                "senha": senha
             }
 
             email = threading.Thread(target=Mandar_Email, args=(nome, email, 1, outros))

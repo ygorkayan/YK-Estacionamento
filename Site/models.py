@@ -18,6 +18,7 @@ class Carrinho(models.Model):
     nome = models.CharField(max_length=80)
     sobrenome = models.CharField(max_length=80)
     nickname = models.CharField(max_length=100)
+    senha = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
     endereco = models.CharField(max_length=100)
     pais = models.CharField(max_length=100)

@@ -1,4 +1,5 @@
 from django import forms
+
 from .models import Suporte, Carrinho
 
 
@@ -11,4 +12,4 @@ class FormSuporte(forms.ModelForm):
 class FormCarrinho(forms.ModelForm):
     class Meta:
         model = Carrinho
-        fields = ["nome", "sobrenome", "nickname", "email", "endereco", "pais", "estado", "cep", "valor"]
+        fields = ["nome", "sobrenome", "nickname", "senha", "email", "endereco", "pais", "estado", "cep", "valor"]
