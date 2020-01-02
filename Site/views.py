@@ -20,13 +20,9 @@ def suporte(request):
 
             nome = request.POST["nome"]    #Pega o nome enviado pelo formulario
             email = request.POST["email"]  #Pega o email enviado pelo formulario
-
-            # o email do django é bloqueante, para que a pagina nao fique esperando
-            # manda o email para o render renderizar a pag suporte eu jogo isso para
-            # uma threading com o nome, o email e o modo que é 2 para suporte
-            email = threading.Thread(target=Mandar_Email, args=(nome, email, 2))
-            email.start()
+            Mandar_Email(nome, email, 2)
             return redirect("site-index")
+
     return render(request, "Site/suporte.html")
 
 
@@ -44,34 +40,32 @@ def preco(request):
 
 
 def carrinho(request):
-    if request.method == "POST":
-        formulario = FormCarrinho(request.POST)
-        print(formulario.is_valid())
-        if formulario.is_valid():
-            formulario.save()
+    # A pagina que entra aqui é a carrinho, mais so quando clica em enviar, pois
+    # é quando seu formulario manda os dados para carrinho, o metodo responsavel por
+    # redenrizar o carrinho é o preço
 
-            nome = request.POST["nome"]
-            valor = request.POST["valor"]
-            email = request.POST["email"]
-            nickname = request.POST["nickname"]
-            senha = request.POST["senha"]
-            outros = {
-                "valor": valor,
-                "nickname": nickname,
-                "senha": senha
-            }
+    formulario = FormCarrinho(request.POST)
+    if formulario.is_valid():
+        formulario.save()
 
-            # o email do django é bloqueante, para que a pagina nao fique esperando
-            # manda o email para o render renderizar a pag suporte eu jogo isso para
-            # uma threading com o nome, o email e o modo que é 2 para suporte
-            email = threading.Thread(target=Mandar_Email, args=(nome, email, 1, outros))
-            email.start()
-    return render(request, "Site/index.html")
+        # esses dados sao pego para compor o email que sera enviado
+        nome = request.POST["nome"]
+        valor = request.POST["valor"]
+        email = request.POST["email"]
+        nickname = request.POST["nickname"]
+        senha = request.POST["senha"]
+        outros = {
+            "valor": valor,
+            "nickname": nickname,
+            "senha": senha
+        }
+
+
+        Mandar_Email(nome, email, 1, outros)
+        return redirect("site-index")
 
 
 def Mandar_Email(nome, email, tipo, outros=""):
-    # sei que é melhor tratar threading aqui, porem ainda nao o fiz, mas vou fazer !!!
-
     # Como sao so 2 metodos que mandam email, preferir deixa tudo aqui
     # pois seria mais simples de dar manutençao e de entender
     # o argumentos outros, é para usar com a msg tipo 1, que com ela coloco
@@ -91,4 +85,5 @@ def Mandar_Email(nome, email, tipo, outros=""):
     else:
         msg = "Sua mensagem foi recebida, logo entraremos em contato."
 
-    send_mail(assunto, msg, 'myemail@gmail.com', [email]) # Manda o email
+    email = threading.Thread(target=send_mail, args=(assunto, msg, 'myemail@gmail.com', [email]))
+    email.start()
