@@ -7,7 +7,10 @@ class Suporte(models.Model):
     sobrenome = models.CharField(max_length=80)
     nickname = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
-    texto = models.CharField(max_length=700)
+    texto = models.TextField(max_length=700)
+
+    class Meta:
+        verbose_name_plural = 'Suporte'
 
     def __str__(self):
         return self.nickname
@@ -25,6 +28,9 @@ class Carrinho(models.Model):
     estado = models.CharField(max_length=100)
     cep = models.CharField(max_length=100)
     valor = models.CharField(max_length=8)
+
+    class Meta:
+        verbose_name_plural = 'Carrinho'
 
     def __str__(self):
         return self.nome

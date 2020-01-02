@@ -2,9 +2,14 @@ import threading
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from .forms import FormSuporte, FormCarrinho
+from .models import Carrinho
 
 
 def index(request):
+    t = Carrinho.objects.order_by("data")
+    for item in t:
+        print(item)
+
     return render(request, "Site/index.html")
 
 
