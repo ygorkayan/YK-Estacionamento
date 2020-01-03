@@ -13,30 +13,30 @@ def index(request):
 
 
 def dashboard(request):
-    return render(request, "login/sistema de login/examples/dashboard.html")
+    return render(request, "login/sistema de login/dashboard.html")
 
 
 def icons(request):
-    return render(request, "login/sistema de login/examples/icons.html")
+    return render(request, "login/sistema de login/icons.html")
 
 
 def map(request):
-    return render(request, "login/sistema de login/examples/map.html")
+    return render(request, "login/sistema de login/map.html")
 
 
 def notifications(request):
-    return render(request, "login/sistema de login/examples/notifications.html")
+    return render(request, "login/sistema de login/notifications.html")
 
 
 def tables(request):
-    return render(request, "login/sistema de login/examples/tables.html")
+    return render(request, "login/sistema de login/tables.html")
 
 
 def typography(request):
-    return render(request, "login/sistema de login/examples/typography.html")
+    return render(request, "login/sistema de login/typography.html")
 
 
 def user(request):
-    return render(request, "login/sistema de login/examples/user.html")
+    return render(request, "login/sistema de login/user.html")
 
 
