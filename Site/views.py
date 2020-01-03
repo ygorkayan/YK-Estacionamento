@@ -2,6 +2,7 @@ import threading
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from .forms import FormSuporte, FormCarrinho
+from django.contrib.auth.forms import UserCreationForm
 
 
 def index(request):
@@ -60,6 +61,12 @@ def carrinho(request):
             "senha": senha
         }
 
+        # Gambiarra
+        # faço uso do cadastro do django, pois atravez dele tenho hash na senha, e por isso
+        # fiz essa gambiarra, mais vou melhorar isso !!!
+        # Com os valores vindo da pagina carrinho, pego nickname e a senha e crio um usuario
+        # para que possa logar, esse usuario e senha é enviado por email
+        UserCreationForm({'username': nickname, 'password1': senha, 'password2': senha}).save()
 
         Mandar_Email(nome, email, 1, outros)
         return redirect("site-index")

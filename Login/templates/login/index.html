@@ -17,8 +17,8 @@
 </head>
 
 <body class="text-center">
-<form class="form-signin">
-
+<form class="form-signin" method="post">
+    {% csrf_token %}
     <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24" fill="none"
          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
          class="d-block mx-auto">
@@ -30,13 +30,12 @@
         <line x1="14.31" y1="16" x2="2.83" y2="16"></line>
         <line x1="16.62" y1="12" x2="10.88" y2="21.94"></line>
     </svg>
-
     <br><br>
     <h1 class="h3 mb-3 font-weight-normal">Faça login</h1>
     <label for="inputEmail" class="sr-only">Nickname</label>
-    <input type="text" id="inputEmail" class="form-control" placeholder="Seu Nickname" required autofocus>
+    <input name="nickname" type="text" id="inputEmail" class="form-control" placeholder="Seu Nickname" required autofocus>
     <label for="inputPassword" class="sr-only">Senha</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required>
+    <input name="senha" type="password" id="inputPassword" class="form-control" placeholder="Senha" required>
     <div class="checkbox mb-3">
         <label>
             <input type="checkbox" value="remember-me"> Lembrar de mim
