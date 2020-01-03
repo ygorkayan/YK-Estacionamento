@@ -31,4 +31,11 @@ urlpatterns = [
 
     # App Login:
     path('Login/', Login.index, name="login-index"),
+    path('dashboard/', Login.dashboard, name="login-dashboard"),
+    path('icons/', Login.icons, name="login-icons"),
+    path('map/', Login.map, name="login-map"),
+    path('notifications/', Login.notifications, name="login-notifications"),
+    path('tables/', Login.tables, name="login-tables"),
+    path('typography/', Login.typography, name="login-typography"),
+    path('user/', Login.user, name="login-user"),
 ]
