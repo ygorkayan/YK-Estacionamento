@@ -66,10 +66,15 @@ def carrinho(request):
         # fiz essa gambiarra, mais vou melhorar isso !!!
         # Com os valores vindo da pagina carrinho, pego nickname e a senha e crio um usuario
         # para que possa logar, esse usuario e senha é enviado por email
-        UserCreationForm({'username': nickname, 'password1': senha, 'password2': senha}).save()
+        cadastrar = UserCreationForm({'username': nickname, 'password1': senha, 'password2': senha})
+        if cadastrar.is_valid():
+            cadastrar.save()
+            Mandar_Email(nome, email, 1, outros)
+            return redirect("site-index")
+        else:
+            print("ERRO AO CADASTRAR")
 
-        Mandar_Email(nome, email, 1, outros)
-        return redirect("site-index")
+        return redirect("site-preco")
 
 
 def Mandar_Email(nome, email, tipo, outros=""):
