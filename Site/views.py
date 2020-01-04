@@ -54,7 +54,7 @@ def carrinho(request):
         valor = request.POST["valor"]
         email = request.POST["email"]
         nickname = request.POST["nickname"]
-        senha = request.POST["senha"]
+        senha = "abc.123456789"  # request.POST["senha"]
         outros = {
             "valor": valor,
             "nickname": nickname,
@@ -99,3 +99,22 @@ def Mandar_Email(nome, email, tipo, outros=""):
 
     email = threading.Thread(target=send_mail, args=(assunto, msg, 'myemail@gmail.com', [email]))
     email.start()
+
+
+
+
+
+
+
+
+# Pagina de testes
+def teste(request):
+    if request.method == "POST":
+        formulario = UserCreationForm(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect("site-index")
+
+    formulario = UserCreationForm()
+    context = {"form": formulario}
+    return render(request, "Site/teste.html", context)

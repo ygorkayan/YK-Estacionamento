@@ -38,4 +38,10 @@ urlpatterns = [
     path('tables/', Login.tables, name="login-tables"),
     path('typography/', Login.typography, name="login-typography"),
     path('user/', Login.user, name="login-user"),
+
+
+
+
+    #So ativada quando vou fazer testes
+    #path("teste/", Site.teste, name="teste"),
 ]
