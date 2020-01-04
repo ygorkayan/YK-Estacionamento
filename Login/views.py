@@ -4,15 +4,12 @@ from django.contrib.auth.decorators import login_required
 
 
 def index(request):
-    if request.user != "AnonymousUser":
-        return redirect("login-dashboard")
-
     if request.method == "POST":
         logar = authenticate(username=request.POST['nickname'], password=request.POST['senha'])
         login(request, logar)
         return redirect("login-dashboard")
-
-    return render(request, "Login/index.html")
+    else:
+        return render(request, "Login/index.html")
 
 
 @login_required
