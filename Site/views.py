@@ -46,6 +46,7 @@ def carrinho(request):
     # redenrizar o carrinho é o preço
 
     formulario = FormCarrinho(request.POST)
+    print(formulario.is_valid())
     if formulario.is_valid():
         formulario.save()
 
@@ -54,7 +55,7 @@ def carrinho(request):
         valor = request.POST["valor"]
         email = request.POST["email"]
         nickname = request.POST["nickname"]
-        senha = "abc.123456789"  # request.POST["senha"]
+        senha = request.POST["senha"]
         outros = {
             "valor": valor,
             "nickname": nickname,
@@ -74,7 +75,7 @@ def carrinho(request):
         else:
             print("ERRO AO CADASTRAR")
 
-        return redirect("site-preco")
+    return redirect("site-preco")
 
 
 def Mandar_Email(nome, email, tipo, outros=""):
