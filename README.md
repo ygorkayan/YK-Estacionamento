@@ -5,12 +5,6 @@
 <p>Front-end: HTML5, CSS3 e Bootstrap</p>
 
 
-## Objetivo
-
-
-## Descrição
-
-
 ## Observação
 <p>O HTML, CSS e JavaScript, na sua grande maioria nao foi feito por mim, apenas adaptado para o site
 retirei de:</p> 
