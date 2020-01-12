@@ -5,10 +5,9 @@
 <p>Front-end: HTML5, CSS3 e Bootstrap</p>
 
 ## Objetivo
-<p>fiz esse projeto como forma de estudo, e para servir como um portfólio sobre as tecnologias que tenho conhecimento</p>
+<p>fiz esse projeto como forma de estudo, sobre o Python e o django.</p>
 
 ## Observação
-<p>O HTML, CSS e JavaScript, na sua grande maioria nao foi feito por mim, apenas adaptado para o site
-retirei de:</p> 
+<p> O HTML, CSS e JavaScript, na sua grande maioria não foi feito por mim, apenas adaptado para o site retirei de:</p> 
 <p> - Bootstrap Exemplos</p>
 <p> - Creative Tim</p>
